@@ -1,12 +1,12 @@
-# For-Loop
+# For Function
 
 *Add a for-loop like function to arrays, including **break** and **continue** functionalities.*
 
-![npm](https://img.shields.io/npm/dt/for-loop.svg)
-![npm bundle size](https://img.shields.io/bundlephobia/min/for-loop)
+![npm](https://img.shields.io/npm/dt/for-func.svg)
+![npm bundle size](https://img.shields.io/bundlephobia/min/for-func)
 
 ```ts
-import "for-loop";
+import "for-func";
 
 const arr = [ 1, 2, 3, 4, 5, 6 ];
 
@@ -36,7 +36,7 @@ arr.for(({ curr, jump }) => {
 You can also set a custom **start index**, **condition** or **iterator**.
 
 ```ts
-import "for-loop";
+import "for-func";
 
 const arr = [ 1, 2, 3, 4, 5, 6 ];
 
