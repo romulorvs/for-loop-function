@@ -1,0 +1,31 @@
+{
+  "name": "for-loop",
+  "version": "0.1.0",
+  "description": "Add a for-loop like function to arrays, including break and continue functionalities.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --collectCoverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/romulorvs/for-loop.git"
+  },
+  "keywords": [
+    "for",
+    "for loop",
+    "iterate",
+    "break",
+    "continue",
+    "forEach",
+    "map"
+  ],
+  "author": "RomuloVS",
+  "license": "MIT License",
+  "bugs": {
+    "url": "https://github.com/romulorvs/for-loop"
+  },
+  "homepage": "https://github.com/romulorvs/for-loop",
+  "devDependencies": {
+    "jest": "^28.1.2"
+  }
+}
