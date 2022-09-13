@@ -47,17 +47,19 @@ var forLoop = function (fn, options = {}) {
 
   for (count; condition(count, this); iterator()) {
     try {
-      fn({
-        curr: this[count],
-        index: count,
-        arr: this,
-        stop: function () {
-          throw "$#brk$#";
-        },
-        jump: function () {
-          throw "$#cnt$#";
-        },
-      });
+      fn(
+        this[count],
+        {
+          i: count,
+          arr: this,
+          stop: function () {
+            throw "$#brk$#";
+          },
+          jump: function () {
+            throw "$#cnt$#";
+          },
+        }
+      );
     } catch (err) {
       if (err === "$#brk$#") {
         break;

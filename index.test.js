@@ -4,49 +4,58 @@ describe("For Loop", () => {
   it("should iterate through the array", () => {
     let sum = 0;
     let arr = [1, 2, 3, 4, 5];
-    arr.for(({ curr }) => {
-      sum += curr;
+
+    arr.for((num) => {
+      sum += num;
     });
+
     expect(sum).toBe(15);
 
     sum = 0;
+
     arr.for(
-      ({ curr }) => {
-        sum += curr;
+      (num) => {
+        sum += num;
       },
       {
         start: 1,
       }
     );
+
     expect(sum).toBe(14);
 
     sum = 0;
+
     arr.for(
-      ({ curr }) => {
-        sum += curr;
+      (num) => {
+        sum += num;
       },
       {
         condition: (i) => i < arr.length - 1,
       }
     );
+
     expect(sum).toBe(10);
 
     sum = 0;
+
     arr.for(
-      ({ curr }) => {
-        sum += curr;
+      (num) => {
+        sum += num;
       },
       {
         iterator: (i) => i + 2,
       }
     );
+
     expect(sum).toBe(9);
 
     arr = [1, 2, 3, 4, 5, 6];
     sum = 0;
+
     arr.for(
-      ({ curr }) => {
-        sum += curr;
+      (num) => {
+        sum += num;
       },
       {
         start: 1,
@@ -54,35 +63,41 @@ describe("For Loop", () => {
         iterator: (i) => i + 2,
       }
     );
+
     expect(sum).toBe(6);
   });
 
   it("should continue to next iteration on jump being called", () => {
     let sum = 0;
     const arr = [1, 2, 3, 4, 5];
-    arr.for(({ curr, jump }) => {
-      if (curr === 4) {
+
+    arr.for((num, { jump }) => {
+      if (num === 4) {
         jump();
       }
-      sum += curr;
+      sum += num;
     });
+
     expect(sum).toBe(11);
   });
 
   it("should break loop on stop being called", () => {
     let sum = 0;
     const arr = [1, 2, 3, 4, 5];
-    arr.for(({ curr, stop }) => {
-      if (curr === 4) {
+
+    arr.for((num, { stop }) => {
+      if (num === 4) {
         stop();
       }
-      sum += curr;
+      sum += num;
     });
+
     expect(sum).toBe(6);
   });
 
   it("should throw an error when code does not reach break or continue", () => {
     const arr = [1, 2, 3, 4, 5];
+
     expect(() => {
       arr.for(() => {
         throw new Error("");
@@ -92,6 +107,7 @@ describe("For Loop", () => {
 
   it("should throw an error when typeError is thrown", () => {
     const arr = [1, 2, 3, 4, 5];
+
     expect(() => {
       arr.for(15);
     }).toThrow(TypeError);

@@ -3,13 +3,15 @@ import './index.js'
 declare global {
   interface Array<T> {
     for(
-      fn: (element: {
-        curr: T;
-        index: number;
-        arr: T[];
-        stop: () => never;
-        jump: () => never;
-      }) => void,
+      fn: (
+        curr: T,
+        element: {
+          stop: () => never;
+          jump: () => never;
+          i: number;
+          arr: T[];
+        }
+      ) => void,
       options?: {
         start?: number;
         condition?: (i: number, arr: T[]) => boolean;

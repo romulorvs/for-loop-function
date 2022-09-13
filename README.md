@@ -1,53 +1,54 @@
-# For Function
+# For Loop Function
 
 *Add a for-loop like function to arrays, including **break** and **continue** functionalities.*
 
-![npm](https://img.shields.io/npm/dt/for-func.svg)
-![npm bundle size](https://img.shields.io/bundlephobia/min/for-func)
+![npm](https://img.shields.io/npm/dt/for-loop-function.svg)
+![npm bundle size](https://img.shields.io/bundlephobia/min/for-loop-function)
 
 ```ts
-import "for-func";
+import "for-loop-function";
 
-const arr = [ 1, 2, 3, 4, 5, 6 ];
-
-// looping through each item
-arr.for(({ curr }) => {  
-  console.log(curr); // => 1 2 3 4 5 6
-});
-
+const numbers = [ 1, 2, 3, 4, 5, 6 ];
 
 // break example
-arr.for(({ curr, stop }) => {  
-  if (curr === 5) {
-    stop();
+numbers.for((num, { stop }) => {  
+  if (num === 5) {
+    stop(); // break
   }
-  console.log(curr); // => 1 2 3 4
+  console.log(num); // => 1 2 3 4
 });
 
+
 // continue example
-arr.for(({ curr, jump }) => {
-  if (curr % 2){
-    jump();
+numbers.for((num, { jump }) => {
+  if (num % 2){
+    jump(); // continue
   }
-  console.log(curr); // => 2 4 6
+  console.log(num); // => 2 4 6
+});
+
+
+// getting current index and original array
+numbers.for((num, { i, arr }) => {
+  console.log(num * i + arr.length); // => 6 8 12 18 26 36
 });
 ```
 
-You can also set a custom **start index**, **condition** or **iterator**.
+You can set a custom **start index**, **condition** or **iterator**.
 
 ```ts
-import "for-func";
+import "for-loop-function";
 
-const arr = [ 1, 2, 3, 4, 5, 6 ];
+const numbers = [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ];
 
-arr.for(
-  ({ curr }) => {
-    console.log(curr); // => 5 4 3 2
+numbers.for(
+  (num) => {
+    console.log(num); // => 2 5 8
   },
   {
-    start: 4, // default: 0
-    condition: i => i >= 1, // default: i < arr.length
-    iterator: i => --i // default: ++i
+    start: 1, // default: 0
+    condition: (i, arr) => i < arr.length - 1, // default: i => i < arr.length
+    iterator: i => i + 3 // default: i => ++i
   }
 );
 ```
